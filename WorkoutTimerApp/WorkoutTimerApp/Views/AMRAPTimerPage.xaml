@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkoutTimerApp.Views.AMRAPTimerPage"
+             xmlns:vm="clr-namespace:WorkoutTimerApp.ViewModels"           
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AMRAPTimerViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content >
+        <RelativeLayout >
+            <Image Source="https://mfiles.alphacoders.com/699/699676.jpg" VerticalOptions="StartAndExpand"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1.12}"  ></Image>
+            <StackLayout  >
+                
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="30,50,10,0" BackgroundColor="Gray">
+                    <Label Text='Minutes' FontSize="17" Margin="50,10" FontAttributes="Bold" WidthRequest="70"></Label>
+                    <Entry Placeholder="Min" WidthRequest="70" Text="{Binding Min}"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="30,0,10,0" BackgroundColor="gray">
+                    <Label Text='Seconds' FontSize="17" Margin="50,10" FontAttributes="Bold" WidthRequest="70"></Label>
+                    <Entry Placeholder="Sec" WidthRequest="70" Text="{Binding Sec}"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0,20,0,0">
+                    <Button Margin="30,0,10,10" Text="Start" CornerRadius="15" Command="{Binding StartTimerCommand}"></Button>
+                    <Button Margin="10,0,10,10" Text="Pause" CornerRadius="15" Command="{Binding PauseTimerCommand}"></Button>
+                    <Button Margin="10,0,10,10" Text="Stop" CornerRadius="15" Command="{Binding StopTimerCommand}"></Button>
+                </StackLayout>
+                <Frame HasShadow="True" CornerRadius="10"  BorderColor="Gray" Margin="30,90,30,0" Padding="60,50,60,50">
+                    <StackLayout Orientation="Vertical">
+                        <Label HorizontalTextAlignment="Center" FontSize="30" Text="Timer"/>
+                        <Label VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" FontSize="34">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Duration,Mode=TwoWay}"  />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding LeadDuration,Mode=TwoWay}"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

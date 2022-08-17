@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="WorkoutTimerApp.Views.WorkoutLogsPage"
+             xmlns:vm="clr-namespace:WorkoutTimerApp.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:WorkoutLogsViewModel>
+
+        </vm:WorkoutLogsViewModel>
+    </ContentPage.BindingContext>
+    <RefreshView Command="{Binding RefreshCommand}"
+                 IsRefreshing="{Binding IsRefreshing}">
+
+    <syncfusion:SfDataGrid  x:Name="History"
+                           ItemsSource ="{Binding WorkoutHistories}"
+                            >
+    </syncfusion:SfDataGrid>
+
+    </RefreshView>
+
+</ContentPage>
